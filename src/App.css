@@ -35,6 +35,11 @@ body {
   padding: 10px 5%;
   border-bottom: 1px solid red;
   background-color: #282c34;
+
+}
+
+h1 {
+    color: #000;
 }
 
 .App-link {
