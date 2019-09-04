@@ -1,44 +1,61 @@
-import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring'
+import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 
-import './App.css';
+import Nav from "./Nav";
+import "./App.css";
+
+const AnimatedNav = animated(Nav);
 
 const App = () => {
-    const [isToggled, setToggle] = useState(false);
+  const [isToggled, setToggle] = useState(false);
+  const [isOpenNav, toggleStateNav] = useState(false);
 
-    const propsAnim_1 = useSpring({
-        from: {
-            opacity: 0,
-        },
-        opacity: 1,
-    });
+  const propsAnim_1 = useSpring({
+    from: {
+      opacity: 0
+    },
+    opacity: 1
+  });
 
-    const { color, y } = useSpring({
-        color: isToggled ? 'red' : '#000',
-        // fontSize: isToggled ? '30px' : '20px',
-        y: isToggled ? 0 : -70,
-    });
+  const { color, y } = useSpring({
+    color: isToggled ? "red" : "#000",
+    // fontSize: isToggled ? '30px' : '20px',
+    y: isToggled ? 0 : -70
+  });
 
-    console.log({y})
+  const navAnimation = useSpring({
+    transform: isOpenNav ? "translate3d(0, 0, 0)" : "translate3d(100%, 0, 0)"
+  });
 
-    return (
-      <animated.div className="App" style={propsAnim_1}>
-        <header className="App-header">
-          <div className="logo">LOGO</div>
-          <button className="menu-button">Menu</button>
-        </header>
-        <main>
-            <animated.h1 style={{
-                transform: y.interpolate(y => `translate3d(0, ${y}px, 0`),
-                color
-            }}
-            >
-                Some text
-            </animated.h1>
-            <button onClick={() => setToggle(!isToggled)}>Toggle state</button>
-        </main>
-      </animated.div>
-    );
-}
+  const handleClick = () => {
+    toggleStateNav(isOpenNav => !isOpenNav);
+  };
+
+  console.log({ navAnimation });
+
+  return (
+    <animated.div className="App" style={propsAnim_1}>
+      <header className="App-header">
+        <div className="logo">LOGO</div>
+        <button className="menu-button" onClick={handleClick}>
+          Menu
+        </button>
+
+        <AnimatedNav style={navAnimation} />
+      </header>
+      <main>
+        <animated.h1
+          style={{
+            transform: y.interpolate(y => `translate3d(0, ${y}px, 0`),
+            color
+          }}
+        >
+          Some text
+        </animated.h1>
+        <button onClick={() => setToggle(!isToggled)}>Toggle state</button>
+      </main>
+    </animated.div>
+  );
+};
 
 export default App;

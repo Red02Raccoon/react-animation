@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true,
+    "files.associations": {
+        "*.jsx": "javascriptreact",
+        "*.js": "javascriptreact"
+    }
+}
