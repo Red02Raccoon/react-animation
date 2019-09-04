@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 import Nav from "./Nav";
+import Logo from "./Logo";
+import Text from "./Text";
 import "./App.css";
 
 const AnimatedNav = animated(Nav);
@@ -36,7 +38,7 @@ const App = () => {
   return (
     <animated.div className="App" style={propsAnim_1}>
       <header className="App-header">
-        <div className="logo">LOGO</div>
+        <Logo>Logo test</Logo>
         <button className="menu-button" onClick={handleClick}>
           Menu
         </button>
@@ -54,6 +56,7 @@ const App = () => {
         </animated.h1>
         <button onClick={() => setToggle(!isToggled)}>Toggle state</button>
       </main>
+      <Text>some text for animation</Text>
     </animated.div>
   );
 };

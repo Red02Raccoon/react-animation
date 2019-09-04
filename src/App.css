@@ -25,6 +25,8 @@ body {
 
 .logo {
     width: 200px;
+    position: relative;
+    will-change: transform;
 }
 
 .App-header {
