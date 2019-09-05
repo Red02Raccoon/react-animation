@@ -4,6 +4,7 @@ import { useSpring, animated } from "react-spring";
 import Nav from "./Nav";
 import Logo from "./Logo";
 import Text from "./Text";
+import ParallaxSection from "./ParallaxSection";
 import "./App.css";
 
 const AnimatedNav = animated(Nav);
@@ -57,6 +58,7 @@ const App = () => {
         <button onClick={() => setToggle(!isToggled)}>Toggle state</button>
       </main>
       <Text>some text for animation</Text>
+      <ParallaxSection />
     </animated.div>
   );
 };
